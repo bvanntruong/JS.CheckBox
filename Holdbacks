@@ -1,10 +1,10 @@
 /* Set Holdbacks box to true if the following conditions are satisfied.
-    Investor Code is APO
-    Investor Commitment Number has a trade name
-    Investor Conditions has a date
-    Investor Conditions Sent has a date
-    Investor Conditions Completed has a date
-    Loan Sold is blank */
+    Investor Code is APO.
+    Investor Commitment Number has a trade name.
+    Investor Conditions has a date.
+    Investor Conditions Sent has a date.
+    Investor Conditions Completed has a date.
+    Loan Sold is blank. */
 
 // SecondaryHoldbacksFlag
 
