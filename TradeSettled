@@ -1,0 +1,22 @@
+/* Set TradeSettled box to true if the following conditions are satisfied.
+    Investor Code is APO
+    Investor Commitment Number has a trade name
+    Loan Sold has a date */
+
+// Secondary Trade Settled Flag
+
+if (ev.ScreenName=="Secondary Marketing") {
+var Flag = los.GetField("ExtendedFields.SecondaryTradeSettledFlag");
+Flag = false;
+los.SetField("ExtendedFields.SecondaryTradeSettledFlag", Flag);
+
+if ((los.GetField("Party.InvestorCode") == "APO")
+  &&(los.GetField("Secondary.InvestorCommitmentNo") != "")
+  &&(los.GetField("Status.LoanPurchasedDate") != null)) {
+
+Flag = true;
+los.SetField("ExtendedFields.SecondaryTradeSettledFlag", Flag)
+};
+
+};
+
