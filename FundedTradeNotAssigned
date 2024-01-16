@@ -1,0 +1,24 @@
+/* Set FundedTradeNotAssigned box to true if the following conditions are satisfied.
+    Funding Date is completed
+    Investor Code is APO
+    Investor Commitment Number is blank
+    Shipped Date is blank */
+
+// SecondaryFundedTradeNotAssignedFlag
+
+if (ev.ScreenName=="Secondary Marketing") {
+var Flag = los.GetField("ExtendedFields.SecondaryFundedTradeNotAssignedFlag");
+Flag = false;
+los.SetField("ExtendedFields.SecondaryFundedTradeNotAssignedFlag", Flag);
+
+if ((los.GetField("Status.FundingDate")!=null)
+  &&(los.GetField("InvDet.Code") == "APO")
+  &&(los.GetField("Secondary.InvestorCommitmentNo") == "")
+  &&(los.GetField("Status.ShippedDate")==null)) {
+
+Flag = true;
+los.SetField("ExtendedFields.SecondaryFundedTradeNotAssignedFlag", Flag)
+};
+
+};
+
