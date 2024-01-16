@@ -1,0 +1,28 @@
+/* TRID13:  Set Alternative Cash to Close method to true for Refinances/Second/Third */
+
+
+/* If loan purpose = refinance, 2nd, 2nd refi, 3rd, or 3rd refi,
+ then set the Alternative Cash to Close method for LE/CD to true */
+
+
+if ( (ev.ScreenName=="Home") &&
+ los.GetField("Loan.LoanPurpose") == "2" /* Refinance */){
+ los.SetField("Loan.UseAlternativeCashToCloseTable", true)
+ }
+else if ( (ev.ScreenName=="Home") &&
+ los.GetField("Loan.LoanPurpose") == "5" /* Second */){
+ los.SetField("Loan.UseAlternativeCashToCloseTable", true)
+ }
+else if ( (ev.ScreenName=="Home") &&
+ los.GetField("Loan.LoanPurpose") == "6" /* Third */){
+ los.SetField("Loan.UseAlternativeCashToCloseTable", true)
+ }
+else if ( (ev.ScreenName=="Home") &&
+ los.GetField("Loan.LoanPurpose") == "10" /* Second - Refinance */){
+ los.SetField("Loan.UseAlternativeCashToCloseTable", true)
+ }
+else if ( (ev.ScreenName=="Home") &&
+ los.GetField("Loan.LoanPurpose") == "11" /* Third - Refinance */){
+ los.SetField("Loan.UseAlternativeCashToCloseTable", true);
+ }
+
