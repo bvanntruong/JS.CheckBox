@@ -1,0 +1,21 @@
+/* Set LockedFlowLoans box to true if the following conditions are satisfied.
+    Lock Start Date is completed.
+    Lock Expiration Date is completed.
+    Secondary Investor Registered Date is blank. */
+
+// SecondaryLockedFlowLoansFlag
+
+if (ev.ScreenName=="Secondary Marketing") {
+var Flag = los.GetField("ExtendedFields.SecondaryLockedFlowLoansFlag");
+Flag = false;
+los.SetField("ExtendedFields.SecondaryLockedFlowLoansFlag", Flag);
+
+if ((los.GetField("Loan.LockStartDate") != null)
+  &&(los.GetField("Loan.LockExpirationDate") != null)
+  &&(los.GetField("Secondary.InvestorRegisteredDate") == null)) {
+
+Flag = true;
+los.SetField("ExtendedFields.SecondaryLockedFlowLoansFlag", Flag)
+};
+
+};
