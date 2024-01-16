@@ -1,0 +1,29 @@
+/* Set Holdbacks box to true if the following conditions are satisfied.
+    Investor Code is APO
+    Investor Commitment Number has a trade name
+    Investor Conditions has a date
+    Investor Conditions Sent has a date
+    Investor Conditions Completed has a date
+    Loan Sold is blank */
+
+// SecondaryHoldbacksFlag
+
+if (ev.ScreenName=="Secondary Marketing") {
+var Flag = los.GetField("ExtendedFields.SecondaryHoldbacksFlag");
+Flag = false;
+los.SetField("ExtendedFields.SecondaryHoldbacksFlag", Flag);
+
+if ((los.GetField("Party.InvestorCode") == "APO")
+  &&(los.GetField("Secondary.InvestorCommitmentNo") != "")
+  &&(los.GetField("Status.CustomStatus10Date") != null)
+    // Investor conditions date
+  &&(los.GetField("Status.CustomStatus11Date") != null)
+    // Investor conditions sent date
+  &&(los.GetField("Status.CustomStatus19Date") != null)
+    // Investor conditions completed date
+  &&(los.GetField("Status.LoanPurchasedDate") == null)) {
+Flag = true;
+los.SetField("ExtendedFields.SecondaryHoldbacksFlag", Flag)
+};
+
+};
