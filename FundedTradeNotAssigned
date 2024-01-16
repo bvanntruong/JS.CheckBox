@@ -1,8 +1,8 @@
 /* Set FundedTradeNotAssigned box to true if the following conditions are satisfied.
-    Funding Date is completed
-    Investor Code is APO
-    Investor Commitment Number is blank
-    Shipped Date is blank */
+    Funding Date is completed.
+    Investor Code is APO.
+    Investor Commitment Number is blank.
+    Shipped Date is blank. */
 
 // SecondaryFundedTradeNotAssignedFlag
 
