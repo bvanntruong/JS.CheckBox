@@ -1,0 +1,46 @@
+// WFFUND003 : When SubProp.PropertyType = PUD, check PUD box.
+
+/* Issues due to objects on different screens : 
+
+    This Loan Info Screen :  
+      Prop Type : ExtendedTextValue.Value OR ExtendedFields.ExpandedPropertyType
+      Box : SubProp.Is PUD
+    Subject Property Screen : 
+      Prop Type : SubProp.PropertyType
+      Box : auto checks if SubProp.PropertyType = PUD
+    Home, Closing, Secondary Screens : 
+      Prop Type : SubProp.PropertyType
+      Box : N/A
+*/
+
+
+if (ev.TableAndFieldName=="ExtendedFields.ExpandedPropertyType") {
+ if (los.GetField("ExtendedFields.ExpandedPropertyType") == "PUD") {
+  los.SetField("SubProp.PropertyType", 6)
+  var box = los.GetField("SubProp.IsPUD");
+  box = false;
+  los.SetField("SubProp.IsPUD", box);
+   if (los.GetField("SubProp.PropertyType") == "6"){
+    box = true;
+    los.SetField("SubProp.IsPUD", box);
+    los.SetField("ExtendedFields.ExpandedPropertyType", "PUD")
+    };
+  };
+}
+
+
+else if (ev.TableAndFieldName=="SubProp.PropertyType") {
+ var box = los.GetField("SubProp.IsPUD");
+ box = false;
+ los.SetField("SubProp.IsPUD", box);
+
+ /* PUD in dropdown is 6 */
+ if (los.GetField("SubProp.PropertyType") == "6"){
+  box = true;
+  los.SetField("SubProp.IsPUD", box);
+  los.SetField("ExtendedFields.ExpandedPropertyType", "PUD")
+ };
+
+
+};
+
