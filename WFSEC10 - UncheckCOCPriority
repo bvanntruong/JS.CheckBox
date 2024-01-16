@@ -1,0 +1,19 @@
+/* WFSEC10 : Uncheck COC Priority Box When Relocked */
+
+/* Pulling Task.DateCompleted and Task.Description. It's hidden in field picker. */
+var TaskCount = ev.File.GetCollectionCount("Task");
+if (TaskCount>0){
+ var TaskHistory = ev.File.GetCollectionObject("Task", TaskCount);
+ var DateCompleted = TaskHistory.GetField("DateCompleted");
+ los.SetField("ExtendedFields.TaskDateCompleted", DateCompleted);
+ var TaskDescription = TaskHistory.GetField("Description");
+ los.SetField("ExtendedFields.TaskDescription", TaskDescription)
+}
+
+/* Unchecking the COC Priority Approved box when the Relock Request task is completed. */
+
+if ( (los.GetField("ExtendedFields.TaskDescription") == "COC - Relock Request")
+ && (los.GetField("ExtendedFields.TaskDateCompleted") != "") 
+ && (los.GetField("ExtendedFields.COCPriority") == true) ){
+ los.SetField("ExtendedFields.COCPriority", false)
+};
