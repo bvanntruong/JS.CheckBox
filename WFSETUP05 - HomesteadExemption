@@ -1,0 +1,9 @@
+/* WFSETUP05 : Homestead Exemption */
+
+/* Check Homestead Exemption Box if Occupancy is Investment Property.
+ Set to trigger when screen is changed to Subject Property Screen. */
+
+if ( (ev.ScreenName=="Subject Property") 
+ && (los.GetField("FileData.OccupancyType") == "3") /* Investment Property */ ) {  
+ los.SetField("SubProp.HasHomesteadExemption", true)
+};
